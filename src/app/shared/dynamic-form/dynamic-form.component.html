@@ -1,0 +1,15 @@
+<form [formGroup]="form">
+  @for(field of fields; track field){
+    <ng-container>
+      @if(field.type !== 'array') {
+        <ng-container appDynamicField [config]="field" [group]="form"></ng-container>
+      }
+      @if(field.children?.length) {
+        <app-form-array-controls [config]="field" [group]="form"></app-form-array-controls>
+      }
+    </ng-container>
+  }
+  <div class="button-row">
+    <app-button (buttonClick)="onSubmit($event)">Submit</app-button>
+  </div>
+</form>

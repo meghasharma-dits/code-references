@@ -1,0 +1,10 @@
+<div [formGroup]="group">
+<mat-form-field>
+  <mat-label>{{ config.label }}</mat-label>
+  <mat-select [formControlName]="config.name">
+    @for (option of config.options; track option) {
+      <mat-option [value]="option.value">{{option.value}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+</div>

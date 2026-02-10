@@ -1,0 +1,11 @@
+<div [formGroup]="group">
+  <mat-form-field class="full-width">
+    <mat-label>{{ config.label }}</mat-label>
+    <input matInput [type]="config.type" [formControlName]="config.name" [required]="config.required">
+  </mat-form-field>
+  <div>
+    @if(!group.get(config.name)?.valid && group.get(config.name)?.touched){
+    <small class="error">{{ config.label}} is required.</small>
+    }
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div [formGroup]="group">
+  <label>{{ config.label }}</label>
+  <div [formArrayName]="config.name">
+    @for(ctrl of array.controls; track ctrl; let i = $index) {
+    <div [formGroupName]="i" class="form-group">
+      @for(child of config.children; track child;) {
+      <ng-container appDynamicField [config]="child" [group]="ctrl"></ng-container>
+      }
+      <app-button (buttonClick)="remove(i)">Remove</app-button>
+    </div>
+    }
+  </div>
+  <app-button (buttonClick)="add()">Add</app-button>
+</div>
